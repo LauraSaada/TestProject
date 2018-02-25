@@ -15,6 +15,7 @@ public class CubeController : MonoBehaviour {
 	void Update () {
 
         Deplacement();
+        Saut();
 
 
 	}
@@ -26,4 +27,15 @@ public class CubeController : MonoBehaviour {
         Vector3 deplacement = new Vector3(0, 0, vitesse * temps); // Déclaration nouvelle variable : Création d'un objet Vector3 deplacement qui permettra de modifier la position (en s'ajoutant)
         transform.position = transform.position + deplacement; //On assigne une nouvelle valeur position (dans transform), qui est égale à la position dans transform + la valeur de deplacement
     }
+    void Saut()
+    {
+        if (Input.GetMouseButtonDown(0))
+        { 
+            Debug.Log("Pressed left click.");
+        }
+
+    
+    }
+
+
 }
