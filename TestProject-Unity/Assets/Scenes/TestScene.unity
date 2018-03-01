@@ -459,4 +459,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesse: 6
-  poussee: 4
+  poussee: 15
