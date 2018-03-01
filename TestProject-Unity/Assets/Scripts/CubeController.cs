@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour {
     public float vitesse = 0.5f; // Déclaration variable pour gérer la vitesse depuis Unity directement grâce au "public"
-
+    public float poussee = 5f;
 
     // Use this for initialization
     void Start () {
-		
+
+        		
 	}
 	
 	// Update is called once per frame
@@ -29,9 +30,11 @@ public class CubeController : MonoBehaviour {
     }
     void Saut()
     {
+
         if (Input.GetMouseButtonDown(0))
-        { 
-            Debug.Log("Pressed left click.");
+        {
+            Rigidbody rigidbody = GetComponent<Rigidbody>(); //Récupère Rigidbody pour le mettre dans une variable (rigidbody)
+            rigidbody.AddForce(0, poussee, 0, ForceMode.Impulse); // Utilise la méthode AddForce du rigidbody pour appliquer ma force
         }
 
     
