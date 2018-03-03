@@ -5,6 +5,7 @@ using UnityEngine;
 public class CubeController : MonoBehaviour {
     public float vitesse = 0.5f; // Déclaration variable pour gérer la vitesse depuis Unity directement grâce au "public"
     public float poussee = 5f;
+    bool isGrounded = true;
 
     // Use this for initialization
     void Start () {
@@ -17,9 +18,19 @@ public class CubeController : MonoBehaviour {
 
         Deplacement();
         Saut();
-
+        
 
 	}
+
+    private void OnCollisionEnter(Collision collision)//Méthode de l'objet monobehavior appelé par unity pour récupérer infos d'entrer de collision
+    {
+        Debug.Log ("Enter"+collision.gameObject.name);
+    }
+
+    private void OnCollisionExit(Collision collision)//voir enter collision mais pour sortie de collision
+    {
+        Debug.Log("Exit" + collision.gameObject.name);
+    }
 
     void Deplacement()
     {
@@ -30,11 +41,14 @@ public class CubeController : MonoBehaviour {
     }
     void Saut()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        
+        if (isGrounded == true)
         {
-            Rigidbody rigidbody = GetComponent<Rigidbody>(); //Récupère Rigidbody pour le mettre dans une variable (rigidbody)
-            rigidbody.AddForce(0, poussee, 0, ForceMode.Impulse); // Utilise la méthode AddForce du rigidbody pour appliquer ma force
+            if (Input.GetMouseButtonDown(0))
+            {
+                Rigidbody rigidbody = GetComponent<Rigidbody>(); //Récupère Rigidbody pour le mettre dans une variable (rigidbody)
+                rigidbody.AddForce(0, poussee, 0, ForceMode.Impulse); // Utilise la méthode AddForce du rigidbody pour appliquer ma force
+            }
         }
 
     
