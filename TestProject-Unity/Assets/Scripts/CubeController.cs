@@ -40,10 +40,17 @@ public class CubeController : MonoBehaviour {
 
     void Deplacement()
     {
-        float temps = Time.deltaTime;
-        Transform transform = GetComponent<Transform>(); //Déclaration de la variable transform qui est un composant (qui est un objet) Transform. On lui assigne le composant Transform de Cube
-        Vector3 deplacement = new Vector3(0, 0, vitesse * temps); // Déclaration nouvelle variable : Création d'un objet Vector3 deplacement qui permettra de modifier la position (en s'ajoutant)
-        transform.position = transform.position + deplacement; //On assigne une nouvelle valeur position (dans transform), qui est égale à la position dans transform + la valeur de deplacement
+        // float temps = Time.deltaTime;
+        // Transform transform = GetComponent<Transform>(); //Déclaration de la variable transform qui est un composant (qui est un objet) Transform. On lui assigne le composant Transform de Cube
+        // Vector3 deplacement = new Vector3(0, 0, vitesse * temps); // Déclaration nouvelle variable : Création d'un objet Vector3 deplacement qui permettra de modifier la position (en s'ajoutant)
+        // transform.position = transform.position + deplacement; //On assigne une nouvelle valeur position (dans transform), qui est égale à la position dans transform + la valeur de deplacement
+
+        Rigidbody rigidbody = GetComponent<Rigidbody>();//Récupère Rigidbody pour le mettre dans une variable (rigidbody)
+        if (isGrounded == true) //Check si le personnage cube est bien au sol
+        {
+            rigidbody.velocity = new Vector3 (0, 0, vitesse); //s'il est bien au sol, on lui donne sa vitesse
+        }
+       
     }
     void Saut()
     {
