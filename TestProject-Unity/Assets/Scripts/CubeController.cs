@@ -24,12 +24,18 @@ public class CubeController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)//Méthode de l'objet monobehavior appelé par unity pour récupérer infos d'entrer de collision
     {
-        Debug.Log ("Enter"+collision.gameObject.name);
+        if (collision.gameObject.name == "Ground") //Si nom collider == collider de Ground
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)//voir enter collision mais pour sortie de collision
     {
-        Debug.Log("Exit" + collision.gameObject.name);
+        if (collision.gameObject.name == "Ground")
+        {
+            isGrounded = false;
+        }
     }
 
     void Deplacement()
@@ -53,6 +59,7 @@ public class CubeController : MonoBehaviour {
 
     
     }
+
 
 
 }
